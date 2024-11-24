@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://dc3c6p66bgw4f"]
+
+[ext_resource type="Script" path="res://Scripts/end_checkpoint.gd" id="1_5kesx"]
+[ext_resource type="Texture2D" uid="uid://dg32qulpph46j" path="res://Assets/Checkpoints/End.png" id="1_7dthe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esnnb"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dsb64"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpodc"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_081ue"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejp8n"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsbgs"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q7t3"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqr5k"]
+atlas = ExtResource("1_7dthe")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwb4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esnnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dsb64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpodc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_081ue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejp8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsbgs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q7t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqr5k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vbj5"]
+size = Vector2(46, 66)
+
+[node name="End Checkpoint" type="Area2D"]
+script = ExtResource("1_5kesx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_jwb4x")
+animation = &"idle"
+autoplay = "idle"
+frame = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_8vbj5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
